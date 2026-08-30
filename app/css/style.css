@@ -1,0 +1,62 @@
+html, body, body .sapUiBody, body .sapMPage, body .sapMPage > section, body .sapMPageBgStandard {
+  background-color: #ffffff !important;
+}
+
+.pageContent {
+  padding: 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.metricRow {
+  gap: 1rem;
+}
+
+.metricCard {
+  width: 13rem;
+  min-height: 5.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 0;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.metricCard .sapMText {
+  color: #475569;
+}
+
+.metricCard .sapMTitle {
+  margin-top: 0.25rem;
+}
+
+.sectionTitle {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.cleanTable {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.cleanTable .sapMListTblHeaderCell {
+  background: #f8fafc;
+}
+
+.filterRow {
+  margin-bottom: 1rem;
+}
+
+.detailFacts {
+  margin-top: 1rem;
+  gap: 2.5rem;
+}
+
+.detailFact {
+  min-width: 10rem;
+}
+
+.detailFact .sapMLabel {
+  color: #64748b;
+}

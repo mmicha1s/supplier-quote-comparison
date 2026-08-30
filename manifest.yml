@@ -1,0 +1,9 @@
+applications:
+  - name: supplier-quote-comparison
+    memory: 512M
+    path: .
+    buildpacks:
+      - nodejs_buildpack
+    command: node_modules/.bin/cds deploy --to sqlite:db.sqlite && node_modules/.bin/cds-serve
+    env:
+      NODE_ENV: production

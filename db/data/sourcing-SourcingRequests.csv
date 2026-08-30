@@ -1,0 +1,7 @@
+ID,number,product,requestedQuantity,requiredDeliveryDate,status,selectedQuote_ID
+aaaaaaa1-aaaa-aaaa-aaaa-aaaaaaaaaaa1,RFQ-1001,Industrial Pumps,100,2026-09-20,Open,
+aaaaaaa2-aaaa-aaaa-aaaa-aaaaaaaaaaa2,RFQ-1002,Safety Valves,50,2026-09-10,Open,
+aaaaaaa3-aaaa-aaaa-aaaa-aaaaaaaaaaa3,RFQ-1003,Packing Film,500,2026-09-15,Open,
+aaaaaaa4-aaaa-aaaa-aaaa-aaaaaaaaaaa4,RFQ-1004,Steel Brackets,250,2026-09-05,Open,
+aaaaaaa5-aaaa-aaaa-aaaa-aaaaaaaaaaa5,RFQ-1005,Cable Assemblies,100,2026-09-30,Open,
+aaaaaaa6-aaaa-aaaa-aaaa-aaaaaaaaaaa6,RFQ-1006,Carton Boxes,1000,2026-09-18,Selected,ccccccc6-cccc-cccc-cccc-ccccccccccc1

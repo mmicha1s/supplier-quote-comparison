@@ -1,0 +1,33 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="sourcing.controller.Dashboard">
+  <Page title="Supplier Quote Comparison" showHeader="true" enableScrolling="true">
+    <headerContent>
+      <Button text="Sourcing requests" type="Transparent" press=".onShowRequests" />
+      <Button icon="sap-icon://refresh" type="Transparent" tooltip="Refresh" press=".onRefresh" />
+    </headerContent>
+    <content>
+      <VBox class="pageContent" busy="{view>/loading}" busyIndicatorDelay="0">
+        <MessageStrip text="{view>/error}" visible="{= !!${view>/error} }" type="Warning" showIcon="true" class="sapUiSmallMarginBottom" />
+        <HBox wrap="Wrap" class="metricRow">
+          <VBox class="metricCard"><Text text="Open with recommendation" /><Title text="{view>/summary/openRequestsWithRecommendation}" level="H2" /></VBox>
+          <VBox class="metricCard"><Text text="No eligible quote" /><Title text="{view>/summary/noEligibleQuotes}" level="H2" /></VBox>
+          <VBox class="metricCard"><Text text="Selected requests" /><Title text="{view>/summary/selectedRequests}" level="H2" /></VBox>
+          <VBox class="metricCard"><Text text="Recommended pipeline spend" /><Title text="{path: 'view>/summary/recommendedPipelineSpend', formatter: '.formatter.money'}" level="H2" /></VBox>
+          <VBox class="metricCard"><Text text="Potential savings" /><Title text="{path: 'view>/summary/potentialSavings', formatter: '.formatter.money'}" level="H2" /></VBox>
+        </HBox>
+        <Title text="Sourcing request overview" level="H3" class="sectionTitle" />
+        <Table items="{view>/requests}" mode="None" class="cleanTable">
+          <columns>
+            <Column><Text text="Request" /></Column><Column><Text text="Product" /></Column><Column hAlign="End"><Text text="Required date" /></Column><Column><Text text="Status" /></Column><Column><Text text="Recommendation" /></Column>
+          </columns>
+          <items>
+            <ColumnListItem type="Navigation" press=".onRequestPress">
+              <cells>
+                <Text text="{view>requestNumber}" /><Text text="{view>productName}" /><Text text="{path: 'view>requiredDate', formatter: '.formatter.date'}" /><ObjectStatus text="{view>status}" state="{path: 'view>status', formatter: '.formatter.statusState'}" /><Text text="{view>recommendedSupplier}" />
+              </cells>
+            </ColumnListItem>
+          </items>
+        </Table>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

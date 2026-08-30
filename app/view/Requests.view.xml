@@ -1,0 +1,27 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sourcing.controller.Requests">
+  <Page title="Sourcing requests" showNavButton="true" navButtonPress=".onNavBack">
+    <headerContent><Button text="Dashboard" type="Transparent" press=".onNavBack" /></headerContent>
+    <content>
+      <VBox class="pageContent">
+        <HBox class="filterRow" wrap="Wrap">
+          <SearchField width="20rem" placeholder="Request number, product or supplier" liveChange=".onSearch" />
+          <Select width="12rem" change=".onStatusChange" class="sapUiTinyMarginBegin">
+            <items><core:Item xmlns:core="sap.ui.core" key="all" text="All statuses" /><core:Item xmlns:core="sap.ui.core" key="Open" text="Open" /><core:Item xmlns:core="sap.ui.core" key="Selected" text="Selected" /><core:Item xmlns:core="sap.ui.core" key="No eligible quote" text="No eligible quote" /></items>
+          </Select>
+        </HBox>
+        <Table id="requestsTable" items="{view>/requests}" mode="None" class="cleanTable">
+          <columns>
+            <Column><Text text="Request" /></Column><Column><Text text="Product" /></Column><Column hAlign="End"><Text text="Quantity" /></Column><Column><Text text="Required date" /></Column><Column><Text text="Quotes" /></Column><Column><Text text="Recommended supplier" /></Column><Column hAlign="End"><Text text="Recommended landed cost" /></Column><Column><Text text="Status" /></Column>
+          </columns>
+          <items>
+            <ColumnListItem type="Navigation" press=".onRequestPress">
+              <cells>
+                <Text text="{view>requestNumber}" /><Text text="{view>productName}" /><Text text="{view>requestedQuantity}" /><Text text="{path: 'view>requiredDate', formatter: '.formatter.date'}" /><Text text="{view>quoteCount}" /><Text text="{view>recommendedSupplier}" /><Text text="{path: 'view>recommendedLandedCost', formatter: '.formatter.money'}" /><ObjectStatus text="{view>status}" state="{path: 'view>status', formatter: '.formatter.statusState'}" />
+              </cells>
+            </ColumnListItem>
+          </items>
+        </Table>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

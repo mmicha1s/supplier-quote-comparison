@@ -1,0 +1,19 @@
+ID,request_ID,supplier_ID,unitPrice,shippingCost,paymentTerms,minimumOrderQuantity,leadTimeDays,validUntil
+ccccccc1-cccc-cccc-cccc-ccccccccccc1,aaaaaaa1-aaaa-aaaa-aaaa-aaaaaaaaaaa1,11111111-1111-1111-1111-111111111111,1400.00,950.00,Net 30,100,7,2026-09-15
+ccccccc1-cccc-cccc-cccc-ccccccccccc2,aaaaaaa1-aaaa-aaaa-aaaa-aaaaaaaaaaa1,22222222-2222-2222-2222-222222222222,1200.00,700.00,Net 45,100,25,2026-09-15
+ccccccc1-cccc-cccc-cccc-ccccccccccc3,aaaaaaa1-aaaa-aaaa-aaaa-aaaaaaaaaaa1,33333333-3333-3333-3333-333333333333,1300.00,800.00,Net 30,200,8,2026-09-15
+ccccccc2-cccc-cccc-cccc-ccccccccccc1,aaaaaaa2-aaaa-aaaa-aaaa-aaaaaaaaaaa2,11111111-1111-1111-1111-111111111111,380.00,450.00,Net 30,50,6,2026-09-08
+ccccccc2-cccc-cccc-cccc-ccccccccccc2,aaaaaaa2-aaaa-aaaa-aaaa-aaaaaaaaaaa2,22222222-2222-2222-2222-222222222222,360.00,500.00,Net 45,50,5,2026-08-20
+ccccccc2-cccc-cccc-cccc-ccccccccccc3,aaaaaaa2-aaaa-aaaa-aaaa-aaaaaaaaaaa2,55555555-5555-5555-5555-555555555555,400.00,1000.00,Net 60,50,3,2026-09-12
+ccccccc3-cccc-cccc-cccc-ccccccccccc1,aaaaaaa3-aaaa-aaaa-aaaa-aaaaaaaaaaa3,11111111-1111-1111-1111-111111111111,31.00,1000.00,Net 30,500,12,2026-09-10
+ccccccc3-cccc-cccc-cccc-ccccccccccc2,aaaaaaa3-aaaa-aaaa-aaaa-aaaaaaaaaaa3,44444444-4444-4444-4444-444444444444,29.00,1100.00,Net 45,500,25,2026-09-10
+ccccccc3-cccc-cccc-cccc-ccccccccccc3,aaaaaaa3-aaaa-aaaa-aaaa-aaaaaaaaaaa3,55555555-5555-5555-5555-555555555555,32.00,1000.00,Net 60,250,9,2026-09-10
+ccccccc4-cccc-cccc-cccc-ccccccccccc1,aaaaaaa4-aaaa-aaaa-aaaa-aaaaaaaaaaa4,22222222-2222-2222-2222-222222222222,84.00,650.00,Net 45,250,10,2026-09-10
+ccccccc4-cccc-cccc-cccc-ccccccccccc2,aaaaaaa4-aaaa-aaaa-aaaa-aaaaaaaaaaa4,33333333-3333-3333-3333-333333333333,81.00,900.00,Net 30,500,3,2026-09-10
+ccccccc4-cccc-cccc-cccc-ccccccccccc3,aaaaaaa4-aaaa-aaaa-aaaa-aaaaaaaaaaa4,66666666-6666-6666-6666-666666666666,79.00,800.00,Net 30,250,2,2026-08-25
+ccccccc5-cccc-cccc-cccc-ccccccccccc1,aaaaaaa5-aaaa-aaaa-aaaa-aaaaaaaaaaa5,11111111-1111-1111-1111-111111111111,220.00,1000.00,Net 30,100,10,2026-09-20
+ccccccc5-cccc-cccc-cccc-ccccccccccc2,aaaaaaa5-aaaa-aaaa-aaaa-aaaaaaaaaaa5,33333333-3333-3333-3333-333333333333,220.00,1000.00,Net 30,100,7,2026-09-20
+ccccccc5-cccc-cccc-cccc-ccccccccccc3,aaaaaaa5-aaaa-aaaa-aaaa-aaaaaaaaaaa5,55555555-5555-5555-5555-555555555555,220.00,1000.00,Net 60,100,7,2026-09-20
+ccccccc6-cccc-cccc-cccc-ccccccccccc1,aaaaaaa6-aaaa-aaaa-aaaa-aaaaaaaaaaa6,22222222-2222-2222-2222-222222222222,17.00,500.00,Net 45,1000,8,2026-09-10
+ccccccc6-cccc-cccc-cccc-ccccccccccc2,aaaaaaa6-aaaa-aaaa-aaaa-aaaaaaaaaaa6,55555555-5555-5555-5555-555555555555,18.00,800.00,Net 60,1000,5,2026-09-10
+ccccccc6-cccc-cccc-cccc-ccccccccccc3,aaaaaaa6-aaaa-aaaa-aaaa-aaaaaaaaaaa6,44444444-4444-4444-4444-444444444444,16.00,600.00,Net 30,1200,6,2026-09-10

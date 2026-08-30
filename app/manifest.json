@@ -1,0 +1,51 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "sourcing",
+    "type": "application",
+    "title": "Supplier Quote Comparison",
+    "applicationVersion": { "version": "1.0.0" }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": { "desktop": true, "tablet": true, "phone": true }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": { "sap.m": {}, "sap.ui.core": {} }
+    },
+    "resources": {
+      "css": [
+        { "uri": "css/style.css" }
+      ]
+    },
+    "models": {},
+    "rootView": {
+      "viewName": "sourcing.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "sourcing.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        { "pattern": "", "name": "dashboard", "target": "dashboard" },
+        { "pattern": "requests", "name": "requests", "target": "requests" },
+        { "pattern": "requests/{requestId}", "name": "requestDetail", "target": "requestDetail" }
+      ],
+      "targets": {
+        "dashboard": { "viewName": "Dashboard", "viewId": "dashboard" },
+        "requests": { "viewName": "Requests", "viewId": "requests" },
+        "requestDetail": { "viewName": "RequestDetail", "viewId": "requestDetail" }
+      }
+    }
+  }
+}

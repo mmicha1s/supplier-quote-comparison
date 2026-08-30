@@ -1,0 +1,28 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sourcing.controller.RequestDetail">
+  <Page title="Request details" showNavButton="true" navButtonPress=".onBack">
+    <content>
+      <VBox class="pageContent">
+        <Title text="{view>requestNumber}" level="H2" />
+        <HBox wrap="Wrap" class="detailFacts">
+          <VBox class="detailFact"><Label text="Product" /><Text text="{view>productName}" /></VBox>
+          <VBox class="detailFact"><Label text="Requested quantity" /><Text text="{view>requestedQuantity}" /></VBox>
+          <VBox class="detailFact"><Label text="Required delivery date" /><Text text="{path: 'view>requiredDate', formatter: '.formatter.date'}" /></VBox>
+          <VBox class="detailFact"><Label text="Status" /><ObjectStatus text="{view>status}" state="{path: 'view>status', formatter: '.formatter.statusState'}" /></VBox>
+        </HBox>
+        <Title text="Supplier quotes" level="H3" class="sectionTitle" />
+        <Table items="{view>quotes}" class="cleanTable" autoPopinMode="true">
+          <columns>
+            <Column><Text text="Supplier" /></Column><Column hAlign="End"><Text text="Unit price" /></Column><Column hAlign="End"><Text text="Shipping" /></Column><Column hAlign="End"><Text text="Landed cost" /></Column><Column><Text text="Payment terms" /></Column><Column hAlign="End"><Text text="MOQ" /></Column><Column hAlign="End"><Text text="Lead time" /></Column><Column><Text text="Delivery date" /></Column><Column hAlign="End"><Text text="On-time" /></Column><Column hAlign="End"><Text text="Quality" /></Column><Column><Text text="Eligibility" /></Column><Column hAlign="End"><Text text="Action" /></Column>
+          </columns>
+          <items>
+            <ColumnListItem>
+              <cells>
+                <Text text="{view>supplierName}" /><Text text="{path: 'view>unitPrice', formatter: '.formatter.money'}" /><Text text="{path: 'view>shippingCost', formatter: '.formatter.money'}" /><Text text="{path: 'view>landedCost', formatter: '.formatter.money'}" /><Text text="{view>paymentTerms}" /><Text text="{view>minimumOrderQuantity}" /><Text text="{view>leadTimeDays}" /><Text text="{path: 'view>estimatedDeliveryDate', formatter: '.formatter.date'}" /><Text text="{path: 'view>supplierOnTimeDeliveryRate', formatter: '.formatter.percentage'}" /><Text text="{path: 'view>supplierQualityScore', formatter: '.formatter.quality'}" /><ObjectStatus text="{parts: [{path: 'view>eligible'}, {path: 'view>eligibilityReason'}], formatter: '.formatter.eligibilityText'}" state="{path: 'view>eligible', formatter: '.formatter.eligibleState'}" /><Button text="Select quote" type="Transparent" press=".onSelectQuote" enabled="{view>selectable}" />
+              </cells>
+            </ColumnListItem>
+          </items>
+        </Table>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

@@ -1,0 +1,8 @@
+node_modules/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+cds-server.log
+cds-server.pid
+.vscode/
