@@ -1,0 +1,105 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "sourcing.quotes",
+    "type": "application",
+    "title": "Supplier Quotes",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sourcing/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.fe.templates": {},
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.fe.core.rootView.NavContainer",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlId": "appContent",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "QuotesList",
+          "target": "QuotesList"
+        },
+        {
+          "pattern": "Quotes({key}):?query:",
+          "name": "QuotesObjectPage",
+          "target": "QuotesObjectPage"
+        }
+      ],
+      "targets": {
+        "QuotesList": {
+          "type": "Component",
+          "id": "QuotesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Quotes",
+              "variantManagement": "Page",
+              "initialLoad": "Enabled",
+              "navigation": {
+                "Quotes": {
+                  "detail": {
+                    "route": "QuotesObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "QuotesObjectPage": {
+          "type": "Component",
+          "id": "QuotesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Quotes"
+            }
+          }
+        }
+      }
+    }
+  }
+}

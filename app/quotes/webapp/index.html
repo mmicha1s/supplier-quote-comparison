@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supplier Quotes</title>
+  <style>
+    html, body, body > div { height: 100%; margin: 0; }
+
+    body.sapUiBody,
+    .sapFDynamicPageContent,
+    .sapFDynamicPageContentWrapper { background: #ffffff !important; }
+
+    .sapFDynamicPageTitleMainActions .sapMMenuBtn { display: none; }
+  </style>
+  <script
+    id="sap-ui-bootstrap"
+    src="https://ui5.sap.com/1.120.23/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_horizon"
+    data-sap-ui-compatVersion="edge"
+    data-sap-ui-async="true"
+    data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+    data-sap-ui-resourceroots='{"sourcing.quotes": "./"}'></script>
+</head>
+<body class="sapUiBody sapUiSizeCompact">
+  <div
+    data-sap-ui-component
+    data-name="sourcing.quotes"
+    data-id="sourcingQuotes"
+    data-height="100%"
+    data-settings='{"id":"sourcingQuotes"}'></div>
+</body>
+</html>

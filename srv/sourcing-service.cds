@@ -16,7 +16,12 @@ service SourcingService {
     virtual expectedDeliveryDate : Date,
     virtual eligible           : Boolean,
     virtual eligibilityReason  : String,
-    virtual recommended        : Boolean
+    virtual recommended        : Boolean,
+    virtual selectable         : Boolean,
+    virtual eligibilityCriticality : Integer
+  } actions {
+    @Core.OperationAvailable: selectable
+    action choose() returns Quotes;
   };
 
   function getDashboard() returns DashboardSummary;

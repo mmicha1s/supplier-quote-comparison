@@ -1,13 +1,19 @@
 const cds = require('@sap/cds')
 const { calculateQuotes } = require('./sourcing-calculations')
 
-const copyCalculation = (quote, calculation) => {
+// UI.CriticalityType codes used by the Fiori Elements colour coding
+const CRITICALITY_NEGATIVE = 1
+const CRITICALITY_POSITIVE = 3
+
+const copyCalculation = (quote, calculation, request) => {
   quote.materialCost = calculation.materialCost
   quote.landedCost = calculation.landedCost
   quote.expectedDeliveryDate = calculation.expectedDeliveryDate
   quote.eligible = calculation.eligible
   quote.eligibilityReason = calculation.eligibilityReason
   quote.recommended = calculation.recommended
+  quote.selectable = calculation.eligible && request.status !== 'Selected'
+  quote.eligibilityCriticality = calculation.eligible ? CRITICALITY_POSITIVE : CRITICALITY_NEGATIVE
 }
 
 module.exports = cds.service.impl(async function () {
@@ -26,9 +32,25 @@ module.exports = cds.service.impl(async function () {
   }
 
   const calculateRequestQuotes = (request, quotes) => {
+    if (!request) return []
     const requestQuotes = quotes.filter(quote => quote.request_ID === request.ID)
     return calculateQuotes(requestQuotes, request)
   }
+
+  // Virtual fields are computed from these columns, so they must be read even when
+  // a $select (Fiori Elements always sends one) does not ask for them.
+  const sourceColumns = ['ID', 'request_ID', 'supplier_ID', 'unitPrice', 'shippingCost',
+    'minimumOrderQuantity', 'leadTimeDays', 'validUntil']
+
+  this.before('READ', 'Quotes', req => {
+    const columns = req.query.SELECT?.columns
+    if (!columns) return
+
+    sourceColumns.forEach(name => {
+      const alreadySelected = columns.some(column => column.ref?.[0] === name)
+      if (!alreadySelected) columns.push({ ref: [name] })
+    })
+  })
 
   this.after('READ', 'Quotes', async data => {
     const responseQuotes = Array.isArray(data) ? data : [data]
@@ -43,7 +65,7 @@ module.exports = cds.service.impl(async function () {
     responseQuotes.forEach(quote => {
       const request = requests.find(item => item.ID === quote.request_ID)
       const calculation = calculateRequestQuotes(request, quotes).find(item => item.ID === quote.ID)
-      if (calculation) copyCalculation(quote, calculation)
+      if (calculation) copyCalculation(quote, calculation, request)
     })
   })
 
@@ -59,7 +81,7 @@ module.exports = cds.service.impl(async function () {
 
       request.quotes.forEach(quote => {
         const calculation = calculations.find(item => item.ID === quote.ID)
-        if (calculation) copyCalculation(quote, calculation)
+        if (calculation) copyCalculation(quote, calculation, request)
       })
     })
   })
@@ -102,8 +124,7 @@ module.exports = cds.service.impl(async function () {
     }
   })
 
-  this.on('selectQuote', async req => {
-    const { requestId, quoteId } = req.data
+  const selectQuote = async (req, requestId, quoteId) => {
     if (!requestId || !quoteId) return req.reject(400, 'Request and quote are required')
 
     const request = await SELECT.one.from(SourcingRequests).where({ ID: requestId })
@@ -125,5 +146,18 @@ module.exports = cds.service.impl(async function () {
       .where({ ID: request.ID })
 
     return calculation
+  }
+
+  this.on('selectQuote', req => {
+    const { requestId, quoteId } = req.data
+    return selectQuote(req, requestId, quoteId)
+  })
+
+  this.on('choose', 'Quotes', async req => {
+    const quoteId = req.params[0]?.ID
+    const quote = await SELECT.one.from(Quotes).where({ ID: quoteId })
+    if (!quote) return req.reject(404, 'Quote not found')
+
+    return selectQuote(req, quote.request_ID, quote.ID)
   })
 })

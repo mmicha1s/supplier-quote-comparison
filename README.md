@@ -13,7 +13,11 @@ A small sourcing dashboard that compares supplier quotes by price, delivery date
 - Node.js
 - SAP CAP
 - SAPUI5
+- SAP Fiori Elements
 - SQLite
+
+## Update 31.08
+Added a fiori elements quote browser with a list report and an object page, built from CDS annotations on the existing OData service
 
 ## Next ideas
 - Add user roles for requesters and buyers

@@ -52,16 +52,6 @@ sap.ui.define([
     };
   }
 
-  function prepareSummary(summary) {
-    return {
-      openRequestsWithRecommendation: Number(summary.openRequestsWithRecommendation || 0),
-      noEligibleQuotes: Number(summary.requestsWithoutEligibleQuote || 0),
-      selectedRequests: Number(summary.selectedRequests || 0),
-      recommendedPipelineSpend: Number(summary.recommendedPipelineSpend || 0),
-      potentialSavings: Number(summary.potentialSavings || 0)
-    };
-  }
-
   return UIComponent.extend("sourcing.Component", {
     metadata: {
       manifest: "json"
@@ -72,7 +62,7 @@ sap.ui.define([
 
       this.setModel(new JSONModel({
         requests: [],
-        summary: prepareSummary({}),
+        summary: {},
         loading: true,
         error: ""
       }), "view");
@@ -112,7 +102,7 @@ sap.ui.define([
         var requests = (requestsData.value || []).map(prepareRequest);
 
         model.setProperty("/requests", requests);
-        model.setProperty("/summary", prepareSummary(dashboardData.value || dashboardData));
+        model.setProperty("/summary", dashboardData.value || dashboardData);
         return requests;
       } catch {
         model.setProperty("/error", "No demo data could be loaded - start the CAP server and refresh the page");

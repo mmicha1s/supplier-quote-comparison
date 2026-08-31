@@ -2,6 +2,7 @@
   <Page title="Supplier Quote Comparison" showHeader="true" enableScrolling="true">
     <headerContent>
       <Button text="Sourcing requests" type="Transparent" press=".onShowRequests" />
+      <Link text="Fiori quote browser" href="/quotes/webapp/index.html" target="_blank" />
       <Button icon="sap-icon://refresh" type="Transparent" tooltip="Refresh" press=".onRefresh" />
     </headerContent>
     <content>

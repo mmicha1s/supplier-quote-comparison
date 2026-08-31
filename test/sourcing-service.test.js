@@ -71,4 +71,13 @@ describe('Sourcing service', () => {
       error => error.response?.status === 409
     )
   })
+
+  it('selects a quote through the action bound to a quote row', async () => {
+    const request = await getRequest('RFQ-1002')
+    const quote = await getQuote(request, 'Alpha Supplies')
+    const { data } = await POST(`/sourcing/Quotes(${quote.ID})/SourcingService.choose`, {})
+
+    assert.equal(data.ID, quote.ID)
+    assert.equal(data.eligible, true)
+  })
 })
